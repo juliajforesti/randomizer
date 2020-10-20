@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
+import React, { useState } from "react";
+import "../assets/css/App.css";
 
 const studentsList = [
   "Aline",
@@ -27,10 +27,9 @@ function App() {
   });
 
   const handleClick = (e) => {
-    console.log("handleclick called");
-    const randomIdx = Math.floor(Math.random() * state.students.length);
-    console.log(randomIdx);
-    setState({ ...state, isLoading: true });
+    let randomIdx = Math.floor(Math.random() * state.students.length);
+
+    setState({ ...state, isLoading: true, });
     setTimeout(() => {
       setState({
         ...state,
@@ -38,18 +37,20 @@ function App() {
       });
     }, 2000);
   };
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+
   return (
     <div className="App">
-      <h1 className="p-5">IronRandomizer</h1>
+      <h1 className="p-3">IronRandomizer</h1>
       <button className="btn my-5 px-5" onClick={handleClick}>
         GO!
       </button>
-      <div className="mt-5 d-flex flex-column align-items-center justify-items-center">
+      <div className="result-box mt-5 d-flex flex-column align-items-center justify-content-center align-content-center">
         {state.isLoading ? (
-          <div className="spinner-border text-light" style={{width: "5rem", height: "5rem"}} role="status">
+          <div
+            className="spinner-border text-light"
+            style={{ width: "5rem", height: "5rem" }}
+            role="status"
+          >
             <span className="sr-only">Loading...</span>
           </div>
         ) : (
