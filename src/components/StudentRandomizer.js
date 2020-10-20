@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 const StudentRandomizer = () => {
   const studentsList = [
     "Aline",
-    "Camila",
     "Denis",
     "Denison",
     "Fellype",

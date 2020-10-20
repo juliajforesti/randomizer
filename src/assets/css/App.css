@@ -42,4 +42,9 @@ h1{
 a, .footer{
   color: #223;
 }
-
+.students-list{
+  color: white;
+  height: 50vh;
+  width: 50vw;
+  font-size: 1.4rem;
+}
