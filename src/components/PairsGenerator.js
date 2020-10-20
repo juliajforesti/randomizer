@@ -42,7 +42,7 @@ const PairsGenerator = () => {
         isLoading: false,
         pairs: shuffleArr([...studentsList]),
       });
-    }, 2000);
+    }, 3000);
   };
 
   return (

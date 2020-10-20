@@ -44,7 +44,7 @@ const RandomOrder = () => {
         isLoading: false,
         students: shuffleArr([...studentsList]),
       });
-    }, 2000);
+    }, 3000);
   };
 
   return (
@@ -68,7 +68,7 @@ const RandomOrder = () => {
               arr.length === 1 ? (
                 <div key={i}></div>
               ) : (
-                <p key={i}>
+                <p key={i} className='pl-5'>
                   <strong>{i + 1}. </strong> {student}
                 </p>
               )
