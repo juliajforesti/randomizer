@@ -10,7 +10,7 @@
 }
 .App {
   text-align: center;
-  height: 83vh;
+  height: 80vh;
   background-color: #223;
 }
 h1{
@@ -46,7 +46,7 @@ a, .footer{
   color: white;
   height: 50vh;
   width: 400px;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 .students-list p{
   padding-right: 1rem;
