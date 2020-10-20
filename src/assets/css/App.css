@@ -10,7 +10,7 @@
 }
 .App {
   text-align: center;
-  height: 100vh;
+  height: 83vh;
   background-color: #223;
 }
 h1{
@@ -39,3 +39,7 @@ h1{
   color: white;
   font-size: 4rem;
 }
+a, .footer{
+  color: #223;
+}
+
