@@ -19,20 +19,22 @@ const RandomOrder = () => {
   ];
 
   const [state, setState] = useState({
-    students: [...studentsList],
+    students: [""],
     isLoading: false,
   });
   const shuffleArr = (arr) => {
-    let i = arr.length, j, temp;
-    if ( i === 0 ) return arr;
-    while ( --i ) {
-       j = Math.floor( Math.random() * ( i + 1 ) );
-       temp = arr[i];
-       arr[i] = arr[j];
-       arr[j] = temp;
+    let i = arr.length
+    let j = 0
+    let temp = ''
+    if (i === 0) return arr;
+    while (--i) {
+      j = Math.floor(Math.random() * (i + 1));
+      temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
     }
     return arr;
-  }
+  };
 
   const handleClick = (e) => {
     setState({ ...state, isLoading: true });
@@ -40,9 +42,9 @@ const RandomOrder = () => {
       setState({
         ...state,
         isLoading: false,
-        students: shuffleArr(state.students),
+        students: shuffleArr([...studentsList]),
       });
-    }, 1000);
+    }, 2000);
   };
 
   return (
@@ -54,7 +56,7 @@ const RandomOrder = () => {
       <div className="d-flex flex-column align-items-center justify-content-center align-content-center">
         {state.isLoading ? (
           <div
-            className="spinner-border"
+            className="spinner-border text-light"
             style={{ width: "3rem", height: "3rem" }}
             role="status"
           >
@@ -62,11 +64,15 @@ const RandomOrder = () => {
           </div>
         ) : (
           <div className="students-list d-flex flex-column flex-wrap">
-            {state.students.map((student, i) => (
-              <p key={i}>
-                <strong>{i + 1}.</strong> {student}
-              </p>
-            ))}
+            {state.students.map((student, i, arr) =>
+              arr.length === 1 ? (
+                <div key={i}></div>
+              ) : (
+                <p key={i}>
+                  <strong>{i + 1}. </strong> {student}
+                </p>
+              )
+            )}
           </div>
         )}
       </div>

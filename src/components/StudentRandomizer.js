@@ -47,7 +47,7 @@ const StudentRandomizer = () => {
 
   return (
     <div className="App">
-      <h1 className="pt-3">IronRandomizer</h1>
+      <h1 className="pt-3">Randomizer</h1>
       <button className="btn my-5 px-5" onClick={handleClick}>
         GO!
       </button>
@@ -55,7 +55,7 @@ const StudentRandomizer = () => {
         {state.isLoading ? (
           <h2 className="result">{state.picked}</h2>
         ) : (
-          <h2 className="result" style={{ color: "red" }}>
+          <h2 className="result" style={{ color: "#223" }}>
             {state.picked}
           </h2>
         )}
