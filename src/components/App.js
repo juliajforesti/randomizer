@@ -1,64 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
+import {BrowserRouter, Route} from 'react-router-dom'
 import "../assets/css/App.css";
-
-const studentsList = [
-  "Aline",
-  "Camila",
-  "Denis",
-  "Denison",
-  "Fellype",
-  "Guilherme",
-  "Hector",
-  "Juliana",
-  "Laura",
-  "Leonardo",
-  "Patrick",
-  "Rodrigo",
-  "Tassia",
-  "Thalía",
-  "Vitor",
-];
+import Footer from "./Footer";
+import Navbar from "./Navbar";
+import PairsGenerator from "./PairsGenerator";
+import RandomOrder from "./RandomOrder";
+import StudentRandomizer from "./StudentRandomizer";
 
 function App() {
-  const [state, setState] = useState({
-    students: [...studentsList],
-    picked: "",
-    isLoading: false,
-  });
-
-  const handleClick = (e) => {
-    let randomIdx = Math.floor(Math.random() * state.students.length);
-
-    setState({ ...state, isLoading: true, });
-    setTimeout(() => {
-      setState({
-        ...state,
-        picked: state.students[randomIdx],
-      });
-    }, 2000);
-  };
-
-  return (
-    <div className="App">
-      <h1 className="p-3">IronRandomizer</h1>
-      <button className="btn my-5 px-5" onClick={handleClick}>
-        GO!
-      </button>
-      <div className="result-box mt-5 d-flex flex-column align-items-center justify-content-center align-content-center">
-        {state.isLoading ? (
-          <div
-            className="spinner-border text-light"
-            style={{ width: "5rem", height: "5rem" }}
-            role="status"
-          >
-            <span className="sr-only">Loading...</span>
-          </div>
-        ) : (
-          <h2 className="result">{state.picked}</h2>
-        )}
-      </div>
+  return(
+    <div className='App'>
+    <BrowserRouter>
+      <Navbar />
+      <Route path='/random' component={StudentRandomizer} />
+      <Route path='/pairs' component={PairsGenerator} />
+      <Route path='/random-order' component={RandomOrder} />
+      <Footer />
+    </BrowserRouter>
     </div>
-  );
+  )
 }
 
 export default App;
