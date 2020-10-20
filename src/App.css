@@ -1,0 +1,32 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;;
+}
+.root{
+  top: 0;
+  margin: 0;
+  padding: 0;
+}
+.App {
+  text-align: center;
+  height: 100vh;
+  background-color: #223;
+}
+h1{
+  color: #3cf;
+}
+.btn{
+  background-color: #3cf;
+  border: none;
+  color: #223;
+  font-weight: bolder;
+}
+.btn:hover{
+  background-color: rgb(8, 146, 192);
+}
+.result{
+  color: white;
+  height: 20vh;
+  width: 30vw;
+}
