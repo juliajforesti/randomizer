@@ -1,20 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Home = (props) => {
   const { students, setStudents } = props;
-  const [state, setState] = useState("");
+  const [state, setState] = useState([]);
 
   const handleChange = (event) => {
-    let currentName = "";
-    currentName += event.currentTarget.value;
-    setState(currentName);
+    let currentInput = "";
+    currentInput += event.currentTarget.value;
+    let list = currentInput.split(/[^a-zA-Z]+/gm)
+    console.log(list)
+    setState(list);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setStudents([...students, state]);
+    setStudents([...students, ...state]);
     setState('');
   };
+
+  const handleClearSubmit = (event) => {
+    setStudents([])
+    setState([])
+    console.log('handleclear')
+  }
 
   return (
     <div className="App d-flex flex-column align-items-center justify-content-center">
@@ -25,7 +33,7 @@ const Home = (props) => {
         action=""
         onSubmit={handleSubmit}
       >
-        <input
+        <textarea
           onChange={handleChange}
           className="w-100"
           name="students"
@@ -37,12 +45,17 @@ const Home = (props) => {
           Add
         </button>
       </form>
-      <div className="students-list d-flex flex-column flex-wrap">
+      <div className="students-list d-flex flex-column flex-wrap align-items-center">
         {students.map((student, i) => (
           <p key={i} className="pl-5">
             <strong>{i + 1}. </strong> {student}
           </p>
         ))}
+        {students.length > 0 ? (
+          <button className='btn btn-light' onClick={handleClearSubmit}>
+            Clear all
+          </button>
+        ) : (<></>)}
       </div>
     </div>
   );
