@@ -48,7 +48,7 @@ const StudentRandomizer = () => {
   return (
     <div className="App">
       <h1 className="pt-3">Randomizer</h1>
-      <button className="btn my-5 px-5" onClick={handleClick}>
+      <button className="btn my-3 px-5" onClick={handleClick}>
         GO!
       </button>
       <div className="result-box d-flex flex-column align-items-center justify-content-center align-content-center">
