@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {BrowserRouter, Route} from 'react-router-dom'
 import "../assets/css/App.css";
 import Footer from "./Footer";
@@ -9,14 +9,20 @@ import RandomOrder from "./RandomOrder";
 import StudentRandomizer from "./StudentRandomizer";
 
 function App() {
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    console.log(students)
+  }, [students]);
+  
   return(
     <div className='App'>
     <BrowserRouter>
       <Navbar />
-      <Route exact path='/randomizer' component={Home} />
-      <Route exact path='/randomizer/random' component={StudentRandomizer} />
-      <Route exact path='/randomizer/pairs' component={PairsGenerator} />
-      <Route exact path='/randomizer/random-order' component={RandomOrder} />
+      <Route exact path='/randomizer' render={() => <Home students={students} setStudents={setStudents} />} />
+      <Route exact path='/randomizer/random' render={() => <StudentRandomizer students={students} />} /> 
+      <Route exact path='/randomizer/pairs' render={() => <PairsGenerator students={students}/>} /> 
+      <Route exact path='/randomizer/random-order' render={() => <RandomOrder students={students}/>} /> 
       <Footer />
     </BrowserRouter>
     </div>

@@ -1,27 +1,11 @@
 import React, { useState } from "react";
 
-const RandomOrder = () => {
-  const studentsList = [
-    "Aline",
-    "Denis",
-    "Denison",
-    "Fellype",
-    "Guilherme",
-    "Hector",
-    "Juliana",
-    "Laura",
-    "Leonardo",
-    "Patrick",
-    "Rodrigo",
-    "Tassia",
-    "Thalía",
-    "Vitor",
-  ];
-
+const RandomOrder = (props) => {
   const [state, setState] = useState({
     students: [""],
     isLoading: false,
   });
+  
   const shuffleArr = (arr) => {
     let i = arr.length
     let j = 0
@@ -42,7 +26,7 @@ const RandomOrder = () => {
       setState({
         ...state,
         isLoading: false,
-        students: shuffleArr([...studentsList]),
+        students: shuffleArr([...props.students]),
       });
     }, 3000);
   };
