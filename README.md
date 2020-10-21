@@ -1,6 +1,8 @@
-## IronRandomizer
+## [IronRandomizer](https://juliajforesti.github.io/randomizer)
 
-IronRandomizer was developed to help pickyng students, pairs and order randomly.
+IronRandomizer was developed to help picking students, creating pairs and orders randomly.
+
+Deploy: [Here](https://juliajforesti.github.io/randomizer)
 
 ![Alt text](./src/assets/images/printScreen.png?raw=true "printScreen.png")
 
