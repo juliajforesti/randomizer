@@ -38,25 +38,24 @@ const Home = (props) => {
           className="w-100"
           name="students"
           type="text"
-          placeholder="Student's name"
           value={state}
         />
         <button className="btn btn-light" type="submit">
           Add
         </button>
       </form>
-      <div className="students-list d-flex flex-column flex-wrap align-items-center">
+      <div className="h-25 w-100 students-list d-flex flex-column flex-wrap align-items-center">
         {students.map((student, i) => (
           <p key={i} className="pl-5">
             <strong>{i + 1}. </strong> {student}
           </p>
         ))}
+      </div>
         {students.length > 0 ? (
           <button className='btn btn-light' onClick={handleClearSubmit}>
             Clear all
           </button>
         ) : (<></>)}
-      </div>
     </div>
   );
 };
