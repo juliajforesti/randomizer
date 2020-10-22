@@ -1,25 +1,9 @@
 import React, {useState} from 'react';
 
-const StudentRandomizer = () => {
-  const studentsList = [
-    "Aline",
-    "Denis",
-    "Denison",
-    "Fellype",
-    "Guilherme",
-    "Hector",
-    "Juliana",
-    "Laura",
-    "Leonardo",
-    "Patrick",
-    "Rodrigo",
-    "Tassia",
-    "Thalía",
-    "Vitor",
-  ];
+const StudentRandomizer = (props) => {
 
   const [state, setState] = useState({
-    students: [...studentsList],
+    students: [...props.students],
     picked: "",
     isLoading: false,
   });

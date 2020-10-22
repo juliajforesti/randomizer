@@ -18,6 +18,14 @@ h1{
   font-size: 4rem;
   text-shadow: 2px 2px 2px rgb(0, 0, 0);
 }
+.form-title{
+  color: white;
+}
+.form{
+  height: 20vh;
+  width: 50vw;
+
+}
 .btn{
   background-color: #3cf;
   border: none;

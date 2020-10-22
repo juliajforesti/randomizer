@@ -1,22 +1,6 @@
 import React, { useState } from "react";
 
-const PairsGenerator = () => {
-  const studentsList = [
-    "Aline",
-    "Denis",
-    "Denison",
-    "Fellype",
-    "Guilherme",
-    "Hector",
-    "Juliana",
-    "Laura",
-    "Leonardo",
-    "Patrick",
-    "Rodrigo",
-    "Tassia",
-    "Thalía",
-    "Vitor",
-  ];
+const PairsGenerator = (props) => {
 
   const [state, setState] = useState({ pairs: [], isLoading: false });
 
@@ -40,7 +24,7 @@ const PairsGenerator = () => {
       setState({
         ...state,
         isLoading: false,
-        pairs: shuffleArr([...studentsList]),
+        pairs: shuffleArr([...props.students]),
       });
     }, 3000);
   };
