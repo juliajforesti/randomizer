@@ -61,13 +61,3 @@ a, .footer{
   border-bottom: 1px solid #3cf;
   text-align: start;
 }
-
-/* .flip-img:hover {
-  animation-name: flip_animation;
-  animation-duration: 3s;
-} */
-
-@keyframes flip_animation {
-  from {transform: rotateY(0deg);}
-  to {transform: rotateY(1800deg);}
-}
