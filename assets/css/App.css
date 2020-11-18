@@ -1,0 +1,63 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;;
+}
+.root{
+  top: 0;
+  margin: 0;
+  padding: 0;
+}
+.App {
+  text-align: center;
+  height: 80vh;
+  background-color: #223;
+}
+h1{
+  color: #3cf;
+  font-size: 4rem;
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+}
+.form-title{
+  color: white;
+}
+.form{
+  height: 20vh;
+  width: 50vw;
+
+}
+.btn{
+  background-color: #3cf;
+  border: none;
+  color: #223;
+  font-weight: bolder;
+  width: 20vw;
+}
+.btn:hover{
+  background-color: rgb(8, 146, 192);
+}
+.result-box{
+  background-image: url('../images/hxagon.png');
+  height: 50vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.result{
+  color: white;
+  font-size: 4rem;
+}
+a, .footer{
+  color: #223;
+}
+.students-list{
+  color: white;
+  height: 50vh;
+  width: 400px;
+  font-size: 1.2rem;
+}
+.students-list p{
+  padding-right: 1rem;
+  border-bottom: 1px solid #3cf;
+  text-align: start;
+}
