@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
-  const {cohort, setCohort} = props
-  console.log(cohort)
+  const {cohort} = props
   return (  
     <div className='d-flex flex-column navbar'>
       <Link className='btn btn-light btn-nav m-2' to='/randomizer'>Home</Link>

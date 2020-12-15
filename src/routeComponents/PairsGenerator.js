@@ -1,33 +1,35 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import {randomizeArray} from "react-randomizer";
+
 
 const PairsGenerator = (props) => {
 
-  const [state, setState] = useState({ pairs: [], isLoading: false });
-
-  const shuffleArr = (arr) => {
-    let i = arr.length;
-    let j = 0;
-    let temp = "";
-    if (i === 0) return arr;
-    while (--i) {
-      j = Math.floor(Math.random() * (i + 1));
-      temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
-    }
-    return arr;
-  };
+  const [state, setState] = useState({pairs: [], isLoading: false });
 
   const handleClick = (e) => {
     setState({ ...state, isLoading: true });
+    let randomOrder = randomizeArray([...props.cohort.students])
+
+    let pairsArr = randomOrder.reduce((acc, cv, idx, arr) => {
+      if (idx % 2 === 0)
+        acc.push(arr.slice(idx, idx + 2));
+      return acc;
+    }, []);
+
     setTimeout(() => {
       setState({
         ...state,
         isLoading: false,
-        pairs: shuffleArr([...props.cohort.students.value]),
+        pairs: pairsArr,
       });
-    }, 3000);
+    }, 1000);
   };
+
+  useEffect(() => {
+    console.log(state.pairs)
+    
+  }, [state.pairs]);
 
   return (
     <div className="App">
@@ -50,18 +52,16 @@ const PairsGenerator = (props) => {
           <div className="students-list d-flex flex-column flex-wrap align-content-center justify-content-center">
             <div>
               {state.pairs
-                .filter((pair, i) => i % 2 === 0)
                 .map((pair, i) => (
-                  <p key={i} >
-                    {i + 1}. {pair},
-                  </p>
-                ))}
-            </div>
-            <div >
-              {state.pairs
-                .filter((pair, i) => i % 2 !== 0)
-                .map((pair, i) => (
-                  <p key={i}>{pair}</p>
+                  pair.length === 2 ? (
+                    <p key={i} >
+                      {i + 1}. {pair[0]} e {pair[1]},
+                    </p>
+                  ) : (
+                    <p key={i} >
+                      {i + 1}. {pair[0]}
+                    </p>
+                  )
                 ))}
             </div>
           </div>

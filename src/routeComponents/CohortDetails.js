@@ -1,10 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import api from "../apis/cohortApi";
 
 const CohortDetails = (props) => {
-  const { cohort, setCohort } = props;
+  const { cohort } = props;
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

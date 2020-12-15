@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 
 const StudentRandomizer = (props) => {
-  
   const [state, setState] = useState({
     students: [...props.cohort.students],
     picked: "",
@@ -28,7 +27,6 @@ const StudentRandomizer = (props) => {
     }, 4000);
   };
 
-
   return (
     <div className="App">
       <h1 className="pt-3">Randomizer</h1>
@@ -46,6 +44,6 @@ const StudentRandomizer = (props) => {
       </div>
     </div>
   );
-}
- 
+};
+
 export default StudentRandomizer;

@@ -3,20 +3,23 @@ import { Link } from "react-router-dom";
 import api from "../apis/cohortApi";
 
 const Home = (props) => {
-  const { cohort, setCohort } = props;
   const [cohortList, setCohortList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async function fetchData() {
       const result = await api.get("/cohorts");
-      console.log(result.data);
+
       setCohortList([...result.data]);
       if (result) {
         setIsLoading(false);
       }
     })();
   }, []);
+
+  function handleClick(item) {
+    localStorage.setItem("selectedCohort", JSON.stringify(item));
+  }
 
   return (
     <div>
@@ -30,7 +33,7 @@ const Home = (props) => {
             {cohortList.map((item, i) => (
               <Link
                 key={i}
-                onClick={() => setCohort({ ...item })}
+                onClick={() => handleClick(item)}
                 className="text-light"
                 to={`/randomizer/cohort/${item._id}`}
               >

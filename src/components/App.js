@@ -15,11 +15,17 @@ import CohortDetails from "../routeComponents/CohortDetails";
 function App() {
   const [cohort, setCohort] = useState({});
 
+  let selected = JSON.parse(localStorage.getItem('selectedCohort'))
+  
+  useEffect(() => {
+    setCohort(selected)
+  }, []);
+
   return (
     <div className="App pt-3">
       <BrowserRouter>
         <div className="d-flex bg-dark-blue">
-          <Navbar cohort={cohort} setCohort={setCohort} />
+          <Navbar cohort={cohort} />
           <div className="w-100">
             <Route
               exact

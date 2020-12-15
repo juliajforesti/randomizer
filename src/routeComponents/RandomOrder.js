@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import {randomizeArray} from "react-randomizer";
+
 
 const RandomOrder = (props) => {
   const [state, setState] = useState({
@@ -6,19 +8,6 @@ const RandomOrder = (props) => {
     isLoading: false,
   });
   
-  const shuffleArr = (arr) => {
-    let i = arr.length
-    let j = 0
-    let temp = ''
-    if (i === 0) return arr;
-    while (--i) {
-      j = Math.floor(Math.random() * (i + 1));
-      temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
-    }
-    return arr;
-  };
 
   const handleClick = (e) => {
     setState({ ...state, isLoading: true });
@@ -26,9 +15,9 @@ const RandomOrder = (props) => {
       setState({
         ...state,
         isLoading: false,
-        students: shuffleArr([...props.cohort.students.value]),
+        students: randomizeArray([...props.cohort.students]),
       });
-    }, 3000);
+    }, 1000);
   };
 
   return (
