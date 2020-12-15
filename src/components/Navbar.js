@@ -1,14 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const {cohort, setCohort} = props
+  console.log(cohort)
   return (  
-    <div className='d-flex justify-content-around p-4'>
-      <Link className='btn btn-light m-2' to='/randomizer'>Home</Link>
-      <Link className='btn btn-light m-2' to='/randomizer/random'>Randomizer</Link>
-      <Link className='btn btn-light m-2' to='/randomizer/pairs'>Pairs Generator</Link>
-      <Link className='btn btn-light m-2' to='/randomizer/random-order'>Random Order</Link>
-      <Link className='btn btn-light m-2' to='/randomizer/heads-or-tails'>Heads or Tails</Link>
+    <div className='d-flex flex-column navbar'>
+      <Link className='btn btn-light btn-nav m-2' to='/randomizer'>Home</Link>
+      <Link className='btn btn-light btn-nav m-2' to='/randomizer/add-cohort'>Add cohort</Link>
+      <Link className='btn btn-light btn-nav m-2' to='/randomizer/heads-or-tails'>Heads or Tails</Link>
+      {cohort.students ? (
+        <React.Fragment>
+          <Link className='btn btn-light btn-nav m-2' to='/randomizer/random'>Randomizer</Link>
+          <Link className='btn btn-light btn-nav m-2' to='/randomizer/pairs'>Pairs Generator</Link>
+          <Link className='btn btn-light btn-nav m-2' to='/randomizer/random-order'>Random Order</Link>
+        </React.Fragment>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

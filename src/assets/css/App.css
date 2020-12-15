@@ -7,35 +7,23 @@
   top: 0;
   margin: 0;
   padding: 0;
+  
 }
 .App {
   text-align: center;
-  height: 80vh;
+  height: 90vh;
   background-color: #223;
 }
-h1{
-  color: #3cf;
-  font-size: 4rem;
-  text-shadow: 2px 2px 2px rgb(0, 0, 0);
-}
-.form-title{
-  color: white;
+.navbar{
+  width: 15vw;
+  height: max-content;
+  position: fixed;
 }
 .form{
   height: 20vh;
   width: 50vw;
+}
 
-}
-.btn{
-  background-color: #3cf;
-  border: none;
-  color: #223;
-  font-weight: bolder;
-  width: 20vw;
-}
-.btn:hover{
-  background-color: rgb(8, 146, 192);
-}
 .result-box{
   background-image: url('../images/hxagon.png');
   height: 50vh;
@@ -47,8 +35,11 @@ h1{
   color: white;
   font-size: 4rem;
 }
-a, .footer{
+.footer{
   color: #223;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 .students-list{
   color: white;

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
 const StudentRandomizer = (props) => {
-
+  
   const [state, setState] = useState({
-    students: [...props.students],
+    students: [...props.cohort.students],
     picked: "",
     isLoading: false,
   });

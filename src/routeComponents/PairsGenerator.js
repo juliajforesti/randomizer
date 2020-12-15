@@ -24,7 +24,7 @@ const PairsGenerator = (props) => {
       setState({
         ...state,
         isLoading: false,
-        pairs: shuffleArr([...props.students]),
+        pairs: shuffleArr([...props.cohort.students.value]),
       });
     }, 3000);
   };

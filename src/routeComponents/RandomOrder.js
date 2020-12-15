@@ -26,7 +26,7 @@ const RandomOrder = (props) => {
       setState({
         ...state,
         isLoading: false,
-        students: shuffleArr([...props.students]),
+        students: shuffleArr([...props.cohort.students.value]),
       });
     }, 3000);
   };

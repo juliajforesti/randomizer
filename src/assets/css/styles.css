@@ -1,0 +1,31 @@
+.bg-dark-blue{
+  background-color: #223;
+
+}
+.btn{
+  background-color: #3cf;
+  border: none;
+  color: #223;
+  font-weight: bolder;
+  width: 20vw;
+}
+.btn-nav{
+  width: 150px;
+}
+.btn:hover{
+  background-color: rgb(8, 146, 192);
+}
+a{
+  color: #223;
+}
+h1{
+  color: #3cf;
+  font-size: 4rem;
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+}
+.form-title{
+  color: white;
+}
+li{
+  list-style: none;
+}
