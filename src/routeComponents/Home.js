@@ -19,6 +19,7 @@ const Home = (props) => {
 
   function handleClick(item) {
     localStorage.setItem("selectedCohort", JSON.stringify(item));
+    props.setSelected(JSON.parse(localStorage.getItem("selectedCohort")))
   }
 
   return (

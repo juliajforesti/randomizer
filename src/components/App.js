@@ -14,12 +14,13 @@ import CohortDetails from "../routeComponents/CohortDetails";
 
 function App() {
   const [cohort, setCohort] = useState({});
+  const [selected, setSelected] = useState({});
 
-  let selected = JSON.parse(localStorage.getItem('selectedCohort'))
+  let storage = JSON.parse(localStorage.getItem('selectedCohort'))
   
   useEffect(() => {
-    setCohort(selected)
-  }, []);
+    setCohort(storage)
+  }, [selected]);
 
   return (
     <div className="App pt-3">
@@ -30,7 +31,7 @@ function App() {
             <Route
               exact
               path="/randomizer"
-              render={() => <Home cohort={cohort} setCohort={setCohort} />}
+              render={() => <Home setSelected={setSelected} />}
             />
             <Route
               exact

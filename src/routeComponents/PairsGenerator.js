@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import {randomizeArray} from "react-randomizer";
 
 
@@ -25,11 +24,6 @@ const PairsGenerator = (props) => {
       });
     }, 1000);
   };
-
-  useEffect(() => {
-    console.log(state.pairs)
-    
-  }, [state.pairs]);
 
   return (
     <div className="App">
