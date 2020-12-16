@@ -9,25 +9,32 @@ import PairsGenerator from "../routeComponents/PairsGenerator";
 import RandomOrder from "../routeComponents/RandomOrder";
 import StudentRandomizer from "../routeComponents/StudentRandomizer";
 import HeadsOrTails from "../routeComponents/Coinflip";
-import AddCohort from "../routeComponents/AddCohort";
+import CohortAdd from "../routeComponents/CohortAdd";
 import CohortDetails from "../routeComponents/CohortDetails";
+import CohortEdit from "../routeComponents/CohortEdit";
 
 function App() {
-  const [cohort, setCohort] = useState({});
+  const [cohort, setCohort] = useState({
+    course: "",
+    campus: "",
+    startMonth: "",
+    startYear: null,
+    students: [''],
+  });
   const [selected, setSelected] = useState({});
 
-  let storage = JSON.parse(localStorage.getItem('selectedCohort'))
-  
+  let storage = JSON.parse(localStorage.getItem("selectedCohort"));
+
   useEffect(() => {
-    setCohort(storage)
+    setCohort(storage);
   }, [selected]);
 
   return (
-    <div className="App pt-3">
+    <div className="App">
       <BrowserRouter>
-        <div className="d-flex bg-dark-blue">
+        <div className="bg-dark-blue">
           <Navbar cohort={cohort} />
-          <div className="w-100">
+          <div className="w-100 main-box">
             <Route
               exact
               path="/randomizer"
@@ -36,7 +43,7 @@ function App() {
             <Route
               exact
               path="/randomizer/add-cohort"
-              render={() => <AddCohort cohort={cohort} setCohort={setCohort} />}
+              render={() => <CohortAdd cohort={cohort} setCohort={setCohort} />}
             />
             <Route
               exact
@@ -46,6 +53,18 @@ function App() {
                   {...routeProps}
                   cohort={cohort}
                   setCohort={setCohort}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/randomizer/cohort-edit/:id"
+              render={(routeProps) => (
+                <CohortEdit
+                  {...routeProps}
+                  cohort={cohort}
+                  setCohort={setCohort}
+                  setSelected={setSelected}
                 />
               )}
             />

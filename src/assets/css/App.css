@@ -1,3 +1,11 @@
+/* 
+#33CCFF - ironlogo
+#2EB8E6 - logo escuro
+#2699BF - logo mais escuro
+#196680 - menos escuro (footer)
+#0D3340 - escuro (bg)
+*/
+
 *{
   margin: 0;
   padding: 0;
@@ -11,19 +19,24 @@
 }
 .App {
   text-align: center;
-  height: 90vh;
-  background-color: #223;
+  height: 100vh;
+  background-color: #0D3340;
 }
 .navbar{
-  width: 15vw;
-  height: max-content;
-  position: fixed;
+  border-bottom: 1px solid #196680;
+  box-shadow: 2px 2px 2px #196680;
+  background-color: #0D3340;
+}
+/* padding to escape navbar fixed */
+.main-box{
+  padding-top: 2rem;
 }
 .form{
   height: 20vh;
   width: 50vw;
 }
 
+/* RESULT BOX LOGO */
 .result-box{
   background-image: url('../images/hxagon.png');
   height: 50vh;
@@ -35,28 +48,54 @@
   color: white;
   font-size: 4rem;
 }
+
+/* HOME */
+.cohorts-list-item{
+  border-radius: 0.6rem;
+  border: 1px solid #2699BF;
+}
+.cohorts-list-item:hover{
+  background-color: #196680;
+  font-size: larger;
+}
+
+
+
+/* FOOTER */
 .footer{
-  color: #223;
+  color: white;
   position: fixed;
   bottom: 0;
   width: 100%;
+  background-color: #196680;
 }
+
+/* COHRT DETAILS */
 .students-list{
   color: white;
-  height: 50vh;
-  width: 400px;
+  height: 45vh;
+  padding: 2rem;
   font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #196680;
+  margin: 1rem;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 10px rgb(0, 0, 0);
+  
+
 }
 .students-list p{
   padding-right: 1rem;
-  border-bottom: 1px solid #3cf;
   text-align: start;
 }
 
-/* .flip-img:hover {
-  animation-name: flip_animation;
-  animation-duration: 3s;
-} */
+
+
+
+
 
 @keyframes flip_animation {
   from {transform: rotateY(0deg);}

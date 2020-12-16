@@ -24,24 +24,23 @@ const Home = (props) => {
 
   return (
     <div>
-      <h1>WELCOME!</h1>
+      {/* <h1>WELCOME!</h1> */}
       {isLoading ? (
         <h2 className="text-light">LOADING...</h2>
       ) : (
         <div>
-          <h2 className="text-light">Select your cohort</h2>
-          <ul className="list-box">
+          <h2 className="title-color">Select your cohort</h2>
+          <ul className="m-3">
             {cohortList.map((item, i) => (
               <Link
                 key={i}
                 onClick={() => handleClick(item)}
-                className="text-light"
+                className="text-light "
                 to={`/randomizer/cohort/${item._id}`}
               >
-                <li>
-                  {item.course}
-                  {item.startMonth}
-                  {item.startYear}
+                <li className='cohorts-list-item p-3'>
+                  {item.course} - {item.startMonth}
+                  {item.startYear} - {item.campus}
                 </li>
               </Link>
             ))}

@@ -4,7 +4,7 @@ import api from "../apis/cohortApi";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const AddCohort = (props) => {
+const CohortAdd = (props) => {
   const history = useHistory();
 
   const [input, setInput] = useState({
@@ -32,4 +32,4 @@ const AddCohort = (props) => {
   );
 };
 
-export default AddCohort;
+export default CohortAdd;
