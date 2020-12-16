@@ -29,7 +29,7 @@ const PairsGenerator = (props) => {
     <div className="App">
       <h1 className="pt-3">Pairs Generator</h1>
 
-      <button className="btn my-5 px-5" onClick={handleClick}>
+      <button className="btn my-5 " onClick={handleClick}>
         GO!
       </button>
 

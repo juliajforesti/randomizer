@@ -26,7 +26,7 @@ const HeadsOrTails = () => {
   return (
     <div className="App d-flex flex-column align-items-center">
       <h1 className="pt-3">Heads or Tails</h1>
-      <button className="btn my-5 px-5" onClick={handleFlipClick}>
+      <button className="btn my-5" onClick={handleFlipClick}>
         GO!
       </button>
       {state.flipped ? (

@@ -31,3 +31,6 @@ li {
 .title-color{
   color: #2699BF;
 }
+.border-radius{
+  border-radius: 0.5rem;
+}

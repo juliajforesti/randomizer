@@ -22,11 +22,20 @@
   height: 100vh;
   background-color: #0D3340;
 }
+/* NAVBAR */
 .navbar{
   border-bottom: 1px solid #196680;
   box-shadow: 2px 2px 2px #196680;
   background-color: #0D3340;
 }
+.nav-item {
+  border-left: 1px solid white;
+  width: 160px;
+}
+.active-link{
+  background-color: #196680;
+}
+
 /* padding to escape navbar fixed */
 .main-box{
   padding-top: 2rem;

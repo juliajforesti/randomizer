@@ -17,7 +17,7 @@ const Searchbar = (props) => {
 
   return (  
     <div className="d-flex  justify-content-center">
-      <input name='input' value={input} onChange={handleChange} className='input-group m-3 w-75' type="text" placeholder='Search by name'/>
+      <input name='input' value={input} onChange={handleChange} className='input-group m-3 p-2 w-75 border-radius' type="text" placeholder='Search by name'/>
 
     </div>
   );
