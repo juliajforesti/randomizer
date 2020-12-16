@@ -74,6 +74,7 @@
 .students-list{
   color: white;
   height: 45vh;
+  min-width: 50vw;
   padding: 2rem;
   font-size: 1.2rem;
   display: flex;
@@ -92,6 +93,23 @@
   text-align: start;
 }
 
+
+/* COINFLIP */
+.coin{
+  border-radius: 100%;
+  background-color: #2EB8E6;
+  height: 250px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.coin-text{
+  font-size: 3rem;
+  font-weight: bolder;
+  color: #0D3340;
+
+}
 
 
 

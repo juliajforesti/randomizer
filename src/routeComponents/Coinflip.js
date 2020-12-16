@@ -13,11 +13,11 @@ const HeadsOrTails = () => {
     animationDuration: "3s",
   };
 
-  const imgPaths = ["./assets/images/heads.png", "./assets/images/tails.png"];
+  const sides = ["HEADS", "TAILS"];
 
   function handleFlipClick() {
-    let randomSide = imgPaths[Math.floor(Math.random() * 2)];
-    setState({...state, flippingStyle: flippingStyle, flipped: false})
+    let randomSide = sides[Math.floor(Math.random() * 2)];
+    setState({ ...state, flippingStyle: flippingStyle, flipped: false });
     setTimeout(() => {
       setState({ ...state, side: randomSide, flipped: true });
     }, 3000);
@@ -30,17 +30,27 @@ const HeadsOrTails = () => {
         GO!
       </button>
       {state.flipped ? (
-        <img className="w-25 flip-img" src={state.side} alt="" />
+        <div style={state.flippingStyle} className="flip-img coin ">
+        <p className='coin-text'>{state.side}</p>
+        </div>
       ) : (
-        <img
-          className="w-25 flip-img"
-          src="./assets/images/hexagon.png"
-          alt=""
-          style={state.flippingStyle}
-        />
+        <div style={state.flippingStyle} className="flip-img coin">
+        </div>
       )}
     </div>
   );
 };
 
 export default HeadsOrTails;
+
+{
+  /* 
+  <img className="w-25 flip-img" src={state.side} alt="" />
+
+  <img
+className="w-25 flip-img"
+src="./assets/images/hexagon.png"
+alt=""
+style={state.flippingStyle}
+/> */
+}
