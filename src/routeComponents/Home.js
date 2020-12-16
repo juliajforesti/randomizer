@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../apis/cohortApi";
+import Searchbar from "../components/Searchbar";
 
 const Home = (props) => {
   const [cohortList, setCohortList] = useState([]);
+  const [cohortListOriginal, setCohortListOriginal] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -11,6 +13,8 @@ const Home = (props) => {
       const result = await api.get("/cohorts");
 
       setCohortList([...result.data]);
+      setCohortListOriginal([...result.data]);
+
       if (result) {
         setIsLoading(false);
       }
@@ -19,9 +23,19 @@ const Home = (props) => {
 
   function handleClick(item) {
     localStorage.setItem("selectedCohort", JSON.stringify(item));
-    props.setSelected(JSON.parse(localStorage.getItem("selectedCohort")))
+    props.setSelected(JSON.parse(localStorage.getItem("selectedCohort")));
   }
 
+  function searchFilter(input) {
+    let filtered = cohortListOriginal.filter(
+      (item) =>
+        item.course.toLowerCase().includes(input) ||
+        item.campus.toLowerCase().includes(input) ||
+        item.startMonth.toLowerCase().includes(input) ||
+        item.startYear.toString().includes(input)
+    );
+    setCohortList([...filtered]);
+  }
   return (
     <div>
       {/* <h1>WELCOME!</h1> */}
@@ -30,6 +44,7 @@ const Home = (props) => {
       ) : (
         <div>
           <h2 className="title-color">Select your cohort</h2>
+          <Searchbar searchFilter={searchFilter} />
           <ul className="m-3">
             {cohortList.map((item, i) => (
               <Link
@@ -38,7 +53,7 @@ const Home = (props) => {
                 className="text-light "
                 to={`/randomizer/cohort/${item._id}`}
               >
-                <li className='cohorts-list-item p-3'>
+                <li className="cohorts-list-item p-3">
                   {item.course} - {item.startMonth}
                   {item.startYear} - {item.campus}
                 </li>
