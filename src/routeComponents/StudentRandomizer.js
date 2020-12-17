@@ -35,9 +35,9 @@ const StudentRandomizer = (props) => {
       </button>
       <div className="result-box d-flex flex-column align-items-center justify-content-center align-content-center">
         {state.isLoading ? (
-          <h2 className="result">{state.picked}</h2>
+          <h2 className="result text-capitalize">{state.picked}</h2>
         ) : (
-          <h2 className="result" style={{ color: "#223" }}>
+          <h2 className="result text-capitalize"  style={{ color: "#223" }}>
             {state.picked}
           </h2>
         )}

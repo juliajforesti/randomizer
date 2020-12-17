@@ -8,7 +8,7 @@ const Form = (props) => {
   const history = useHistory()
 
   const months = "JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC".split(",");
-  const courses = ["WDFT", "WDPT", "DAFT", "DAPT", "UXUIFT", "UXUIPT"];
+  const courses = ["WDFT", "WDPT","WDPTR", "DAFT", "DAPT", "UXUIFT", "UXUIPT"];
   const campi = [
     "São Paulo",
     "Paris",
