@@ -1,18 +1,22 @@
 .bg-dark-blue {
   background-color: #0D3340;
 }
-.btn {
-  background-color: #3cf;
+.btn-blue {
+  background-color: #2699BF;
   border: none;
   color: #0D3340;
-  font-weight: bolder;
-  width: 20vw;
+  font-weight: bold;
+  width: 20%;
+}
+.btn-blue:hover{
+  background-color: #196680;
 }
 .btn-nav {
   width: 150px;
 }
+
 .btn:hover {
-  background-color: rgb(8, 146, 192);
+  /* background-color: rgb(8, 146, 192); */
 }
 a {
   color: #0D3340;

@@ -1,13 +1,13 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import api from '../apis/cohortApi'
 
 import CreatableSelect from "react-select/creatable";
 
 const components = {
   DropdownIndicator: null,
 };
-
 
 const createOption = (label) => ({
   label,
@@ -16,16 +16,32 @@ const createOption = (label) => ({
 
 function CreatableInputOnly(props) {
 
+  // original creatable state
   const [state, setState] = useState({
     inputValue: "",
     value: [],
   });
 
   useEffect(() => {
-    let studentsList = state.value ? [...state.value].map(obj => obj.value) : [];
-    props.setInput({ ...props.input, students: studentsList });
-  }, [state.value]);
+    (async function(){
+      const response = await api.get(`/cohort/${props.id}`)
+      let newState = response.data.students.map(studentName => createOption(studentName))
 
+      setState({...state, value: [...newState]})
+    })()
+  }, []);
+
+
+  // updating form input with array of names
+  useEffect(() => {
+    let studentsList = state.value
+      ? [...state.value].map((obj) => obj.value)
+      : [];
+    props.setInput({ ...props.input, students: studentsList });
+    console.log(state)
+  }, [state]);
+
+  // original handle functions
   const handleChange = (value, actionMeta) => {
     console.group("Value Changed");
     console.log(value);

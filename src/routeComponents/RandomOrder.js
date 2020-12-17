@@ -23,7 +23,7 @@ const RandomOrder = (props) => {
   return (
     <div className="App">
       <h1 className="pt-3">Random Order</h1>
-      <button className="btn my-5 " onClick={handleClick}>
+      <button className="btn btn-blue my-5 " onClick={handleClick}>
         GO!
       </button>
       <div className="d-flex flex-column align-items-center justify-content-center align-content-center">

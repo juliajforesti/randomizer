@@ -1,8 +1,11 @@
 import React from "react";
+import { Link, useHistory } from "react-router-dom";
 import MultiSelectInput from './MultiSelectInput'
+
 
 const Form = (props) => {
   const { handleSubmit, input, setInput } = props;
+  const history = useHistory()
 
   const months = "JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC".split(",");
   const courses = ["WDFT", "WDPT", "DAFT", "DAPT", "UXUIFT", "UXUIPT"];
@@ -89,11 +92,12 @@ const Form = (props) => {
           Students list
         </label>
 
-        <MultiSelectInput input={input} setInput={setInput}/>
+        <MultiSelectInput input={input} setInput={setInput} id={props.id}/>
 
-        <button className="btn btn-light" type="submit">
+        <button className="btn btn-light mx-2" type="submit">
           Save
         </button>
+        <button className="btn btn-light mx-2" onClick={() => history.goBack()}>Cancel</button>
       </div>
     </form>
   );

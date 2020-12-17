@@ -27,7 +27,7 @@ const CohortAdd = (props) => {
   }
   return (
     <div>
-      <Form handleSubmit={handleSubmit} input={input} setInput={setInput} />
+      <Form handleSubmit={handleSubmit} input={input} setInput={setInput}/>
     </div>
   );
 };

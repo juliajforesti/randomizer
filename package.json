@@ -11,6 +11,7 @@
     "easy-ease": "^1.0.9",
     "random-groups": "0.0.2",
     "react": "^16.14.0",
+    "react-bootstrap": "^1.4.0",
     "react-dom": "^16.14.0",
     "react-randomizer": "^1.0.6",
     "react-router-dom": "^5.2.0",

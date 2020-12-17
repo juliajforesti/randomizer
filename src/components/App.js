@@ -12,6 +12,7 @@ import HeadsOrTails from "../routeComponents/Coinflip";
 import CohortAdd from "../routeComponents/CohortAdd";
 import CohortDetails from "../routeComponents/CohortDetails";
 import CohortEdit from "../routeComponents/CohortEdit";
+import CohortDelete from "../routeComponents/CohortDelete";
 
 function App() {
   const [cohort, setCohort] = useState({
@@ -61,6 +62,18 @@ function App() {
               path="/randomizer/cohort-edit/:id"
               render={(routeProps) => (
                 <CohortEdit
+                  {...routeProps}
+                  cohort={cohort}
+                  setCohort={setCohort}
+                  setSelected={setSelected}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/randomizer/cohort-delete/:id"
+              render={(routeProps) => (
+                <CohortDelete
                   {...routeProps}
                   cohort={cohort}
                   setCohort={setCohort}

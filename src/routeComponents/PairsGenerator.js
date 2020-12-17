@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {randomizeArray} from "react-randomizer";
+import {createPairs} from '../utils/functions'
 
 
 const PairsGenerator = (props) => {
@@ -10,17 +11,11 @@ const PairsGenerator = (props) => {
     setState({ ...state, isLoading: true });
     let randomOrder = randomizeArray([...props.cohort.students])
 
-    let pairsArr = randomOrder.reduce((acc, cv, idx, arr) => {
-      if (idx % 2 === 0)
-        acc.push(arr.slice(idx, idx + 2));
-      return acc;
-    }, []);
-
     setTimeout(() => {
       setState({
         ...state,
         isLoading: false,
-        pairs: pairsArr,
+        pairs: createPairs(randomOrder),
       });
     }, 1000);
   };
@@ -29,7 +24,7 @@ const PairsGenerator = (props) => {
     <div className="App">
       <h1 className="pt-3">Pairs Generator</h1>
 
-      <button className="btn my-5 " onClick={handleClick}>
+      <button className="btn btn-blue my-5 " onClick={handleClick}>
         GO!
       </button>
 
