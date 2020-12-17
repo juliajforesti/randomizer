@@ -45,7 +45,7 @@ const Home = (props) => {
         <div>
           <h2 className="title-color">Select your cohort</h2>
           <Searchbar searchFilter={searchFilter} />
-          <ul className="m-3">
+          <ul className="m-3 w-75 m-auto">
             {cohortList.map((item, i) => (
               <Link
                 key={i}
