@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = (props) => {
+
+const OldNavbar = (props) => {
   const { cohort } = props;
 
   const [selected, setSelected] = useState("home");
@@ -13,7 +14,7 @@ const Navbar = (props) => {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark w-100 overflow-auto">
+    <nav className="navbar navbar-expand-md navbar-dark w-100 overflow-auto " >
       <Link
         name="home"
         className="navbar-brand text-light"
@@ -37,16 +38,6 @@ const Navbar = (props) => {
         <div className="navbar-nav">
           {cohort ? (
             <>
-              {/* <Link
-                name="select-cohort"
-                className={`nav-item  nav-link ${
-                  selected === "select-cohort" ? "active-link" : ""
-                }`}
-                to="/randomizer"
-                onClick={handleClick}
-              >
-                Select cohort
-              </Link> */}
               <Link
                 name="randomizer"
                 className={`nav-item  nav-link ${
@@ -110,16 +101,6 @@ const Navbar = (props) => {
             </>
           ) : (
             <>
-              {/* <Link
-                name="select-cohort"
-                className={`nav-item  nav-link ${
-                  selected === "select-cohort" ? "active-link" : ""
-                }`}
-                to="/randomizer"
-                onClick={handleClick}
-              >
-                Select cohort
-              </Link> */}
               <Link
                 name="add-cohort"
                 className={`nav-item  nav-link ${
@@ -138,7 +119,7 @@ const Navbar = (props) => {
                 to="/randomizer/heads-or-tails"
                 onClick={handleClick}
               >
-                Heads or Tails
+                CoinFlip
               </Link>
             </>
           )}
@@ -148,4 +129,4 @@ const Navbar = (props) => {
   );
 };
 
-export default Navbar;
+export default OldNavbar;

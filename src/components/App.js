@@ -4,7 +4,7 @@ import "../assets/css/App.css";
 import "../assets/css/styles.css";
 import Footer from "./Footer";
 import Home from "../routeComponents/Home";
-import Navbar from "./Navbar";
+import NavbarComponent from "./NavbarComponent";
 import PairsGenerator from "../routeComponents/PairsGenerator";
 import RandomOrder from "../routeComponents/RandomOrder";
 import StudentRandomizer from "../routeComponents/StudentRandomizer";
@@ -13,6 +13,7 @@ import CohortAdd from "../routeComponents/CohortAdd";
 import CohortDetails from "../routeComponents/CohortDetails";
 import CohortEdit from "../routeComponents/CohortEdit";
 import CohortDelete from "../routeComponents/CohortDelete";
+import InstantList from "../routeComponents/InstantList";
 
 function App() {
   const [cohort, setCohort] = useState({
@@ -20,7 +21,7 @@ function App() {
     campus: "",
     startMonth: "",
     startYear: null,
-    students: [''],
+    students: [""],
   });
   const [selected, setSelected] = useState({});
 
@@ -34,21 +35,33 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <div className="bg-dark-blue">
-          <Navbar cohort={cohort} />
+          <NavbarComponent cohort={cohort} />
           <div className="w-100 main-box">
             <Route
               exact
-              path="/randomizer"
+              path="/"
               render={() => <Home setSelected={setSelected} />}
             />
             <Route
               exact
-              path="/randomizer/add-cohort"
+              path="/add-cohort"
               render={() => <CohortAdd cohort={cohort} setCohort={setCohort} />}
             />
             <Route
               exact
-              path="/randomizer/cohort/:id"
+              path="/instant-list"
+              render={() => (
+                <InstantList
+                  cohort={cohort}
+                  setCohort={setCohort}
+                  setSelected={setSelected}
+                />
+              )}
+            />
+
+            <Route
+              exact
+              path="/cohort/:id"
               render={(routeProps) => (
                 <CohortDetails
                   {...routeProps}
@@ -59,7 +72,7 @@ function App() {
             />
             <Route
               exact
-              path="/randomizer/cohort-edit/:id"
+              path="/cohort-edit/:id"
               render={(routeProps) => (
                 <CohortEdit
                   {...routeProps}
@@ -71,7 +84,7 @@ function App() {
             />
             <Route
               exact
-              path="/randomizer/cohort-delete/:id"
+              path="/cohort-delete/:id"
               render={(routeProps) => (
                 <CohortDelete
                   {...routeProps}
@@ -83,24 +96,20 @@ function App() {
             />
             <Route
               exact
-              path="/randomizer/random"
+              path="/random"
               render={() => <StudentRandomizer cohort={cohort} />}
             />
             <Route
               exact
-              path="/randomizer/pairs"
+              path="/pairs"
               render={() => <PairsGenerator cohort={cohort} />}
             />
             <Route
               exact
-              path="/randomizer/random-order"
+              path="/random-order"
               render={() => <RandomOrder cohort={cohort} />}
             />
-            <Route
-              exact
-              path="/randomizer/heads-or-tails"
-              component={HeadsOrTails}
-            />
+            <Route exact path="/heads-or-tails" component={HeadsOrTails} />
           </div>
         </div>
 
