@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import api from "../apis/cohortApi";
 import Searchbar from "../components/Searchbar";
 
+import { Spinner, Button } from "react-bootstrap";
+
 const Home = (props) => {
   const [cohortList, setCohortList] = useState([]);
   const [cohortListOriginal, setCohortListOriginal] = useState([]);
@@ -38,12 +40,14 @@ const Home = (props) => {
   }
   return (
     <div>
-      {/* <h1>WELCOME!</h1> */}
+      <h2 className="title-color">Select your cohort</h2>
+      <Link to='/add-cohort'><Button variant="info" className='mx-2'>Add new cohort </Button></Link>
+      <Link to='/custom-list'><Button variant="info" className='mx-2'>Add custom list</Button> </Link>
+
       {isLoading ? (
-        <h2 className="text-light">LOADING...</h2>
+        <Spinner animation="border" className='mt-5' variant="info" />
       ) : (
-        <div>
-          <h2 className="title-color">Select your cohort</h2>
+        <>
           <Searchbar searchFilter={searchFilter} />
           <ul className="m-3 w-75 m-auto">
             {cohortList.map((item, i) => (
@@ -60,7 +64,7 @@ const Home = (props) => {
               </Link>
             ))}
           </ul>
-        </div>
+        </>
       )}
     </div>
   );

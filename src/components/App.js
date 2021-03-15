@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "../assets/css/App.css";
 import "../assets/css/styles.css";
+
 import Footer from "./Footer";
 import Home from "../routeComponents/Home";
 import Navbar from "./Navbar";

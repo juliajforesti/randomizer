@@ -8,7 +8,7 @@ const CohortDetails = (props) => {
   const { cohort } = props;
   const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
-
+  
   function handleModalClose() {
     setShowModal(false);
   }

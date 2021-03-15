@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { Button } from "react-bootstrap";
+
 
 const HeadsOrTails = () => {
   const [state, setState] = useState({
@@ -26,9 +28,7 @@ const HeadsOrTails = () => {
   return (
     <div className="App d-flex flex-column align-items-center">
       <h1 className="pt-3">Heads or Tails</h1>
-      <button className="btn btn-blue my-5" onClick={handleFlipClick}>
-        GO!
-      </button>
+      <Button variant="info" className='m-5 btn-blue' onClick={handleFlipClick}> GO! </Button>
       {state.flipped ? (
         <div style={state.flippingStyle} className="flip-img coin ">
         <p className='coin-text'>{state.side}</p>
