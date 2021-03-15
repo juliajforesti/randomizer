@@ -51,7 +51,7 @@ const Home = (props) => {
                 key={i}
                 onClick={() => handleClick(item)}
                 className="text-light "
-                to={`/randomizer/cohort/${item._id}`}
+                to={`/cohort/${item._id}`}
               >
                 <li className="cohorts-list-item p-3">
                   {item.course} - {item.startMonth}

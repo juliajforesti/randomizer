@@ -1,132 +1,110 @@
 import React from "react";
 import { useState } from "react";
+import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 
-
-const OldNavbar = (props) => {
+const NavbarComponent = (props) => {
   const { cohort } = props;
 
-  const [selected, setSelected] = useState("home");
-
-  function handleClick(e) {
-    setSelected(e.target.name);
-    console.log(selected);
-  }
+  const [expanded, setExpanded] = useState(false);
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark w-100 overflow-auto " >
-      <Link
-        name="home"
-        className="navbar-brand text-light"
-        to="/randomizer"
-        onClick={handleClick}
-      >
-        Home
-      </Link>
-      <button
-        className="navbar-toggler text-light"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav">
-          {cohort ? (
-            <>
-              <Link
-                name="randomizer"
-                className={`nav-item  nav-link ${
-                  selected === "randomizer" ? "active-link" : ""
-                }`}
-                to="/randomizer/random"
-                onClick={handleClick}
-              >
-                Randomizer
-              </Link>
-              <Link
-                name="pairs"
-                className={`nav-item  nav-link ${
-                  selected === "pairs" ? "active-link" : ""
-                }`}
-                to="/randomizer/pairs"
-                onClick={handleClick}
-              >
-                Pairs Generator
-              </Link>
-              <Link
-                name="order"
-                className={`nav-item  nav-link ${
-                  selected === "order" ? "active-link" : ""
-                }`}
-                to="/randomizer/random-order"
-                onClick={handleClick}
-              >
-                Random Order
-              </Link>
-              <Link
-                name="coin"
-                className={`nav-item  nav-link ${
-                  selected === "coin" ? "active-link" : ""
-                }`}
-                to="/randomizer/heads-or-tails"
-                onClick={handleClick}
-              >
-                CoinFlip
-              </Link>
-              <Link
-                name="see-cohort"
-                className={`nav-item  nav-link ${
-                  selected === "see-cohort" ? "active-link" : ""
-                }`}
-                to={`/randomizer/cohort/${cohort._id}`}
-                onClick={handleClick}
-              >
-                See cohort <span className="sr-only">(current)</span>
-              </Link>
-              <Link
-                name="add-cohort"
-                className={`nav-item  nav-link ${
-                  selected === "add-cohort" ? "active-link" : ""
-                }`}
-                to="/randomizer/add-cohort"
-                onClick={handleClick}
-              >
+    <Navbar
+      expanded={expanded}
+      collapseOnSelect
+      expand="md"
+      className="nav-color"
+      variant="dark"
+    >
+      <Navbar.Brand>
+        <Link className="navbar-brand text-light" to="/">
+          Home
+        </Link>
+      </Navbar.Brand>
+      <Navbar.Toggle
+        onClick={() => setExpanded(expanded ? false : "expanded")}
+        aria-controls="responsive-navbar-nav"
+      />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        {cohort ? (
+          <>
+            <Nav className="mr-auto">
+              <LinkContainer to="/random" onClick={() => setExpanded(false)}>
+                <Nav.Link>Randomizer</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to="/pairs" onClick={() => setExpanded(false)}>
+                <Nav.Link>Random pairs</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to="/random-order" onClick={() => setExpanded(false)}>
+                <Nav.Link>Random order</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to="/heads-or-tails" onClick={() => setExpanded(false)}>
+                <Nav.Link>Coinflip</Nav.Link>
+              </LinkContainer>
+            </Nav>
+            
+            <Nav>
+              <LinkContainer to={`/cohort/${cohort._id}`} onClick={() => setExpanded(false)}>
+                <Nav.Link>See cohort</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to="/add-cohort" onClick={() => setExpanded(false)}>
+                <Nav.Link>Add cohort</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to="/custom-list" onClick={() => setExpanded(false)}>
+                <Nav.Link>Custom List</Nav.Link>
+              </LinkContainer>
+
+            </Nav>
+          </>
+        ) : (
+          <Nav>
+            {cohort ? (
+              <>
+                <Nav.Link>
+                  <Link to="/random" onClick={() => setExpanded(false)}>
+                    Randomizer
+                  </Link>
+                </Nav.Link>
+                <Nav.Link>
+                  <Link to="/pairs" onClick={() => setExpanded(false)}>
+                    Random pairs
+                  </Link>
+                </Nav.Link>
+                <Nav.Link>
+                  <Link to="/random-order" onClick={() => setExpanded(false)}>
+                    Random order
+                  </Link>
+                </Nav.Link>
+              </>
+            ) : (
+              <></>
+            )}
+            <Nav.Link>
+              <Link to="/add-cohort" onClick={() => setExpanded(false)}>
                 Add cohort
               </Link>
-            </>
-          ) : (
-            <>
-              <Link
-                name="add-cohort"
-                className={`nav-item  nav-link ${
-                  selected === "add-cohort" ? "active-link" : ""
-                }`}
-                to="/randomizer/add-cohort"
-                onClick={handleClick}
-              >
-                Add cohort
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/custom-list" onClick={() => setExpanded(false)}>
+                Instant List
               </Link>
-              <Link
-                name="coin"
-                className={`nav-item  nav-link ${
-                  selected === "coin" ? "active-link" : ""
-                }`}
-                to="/randomizer/heads-or-tails"
-                onClick={handleClick}
-              >
-                CoinFlip
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/heads-or-tails" onClick={() => setExpanded(false)}>
+                Coinflip
               </Link>
-            </>
-          )}
-        </div>
-      </div>
-    </nav>
+            </Nav.Link>
+          </Nav>
+        )}
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 
-export default OldNavbar;
+export default NavbarComponent;

@@ -33,7 +33,7 @@ const CohortEdit = (props) => {
         students: changeFormat(response.data.students),
       });
     })();
-  }, []);
+  }, [id]);
 
   // setting loading to false
   useEffect(() => {
@@ -49,7 +49,7 @@ const CohortEdit = (props) => {
         JSON.stringify(result.data.cohort)
       );
       props.setSelected(JSON.parse(localStorage.getItem("selectedCohort")));
-      history.push(`/randomizer/cohort/${id}`);
+      history.push(`/cohort/${id}`);
     } catch (err) {
       console.error(err);
     }

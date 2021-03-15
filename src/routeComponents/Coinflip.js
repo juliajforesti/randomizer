@@ -42,15 +42,3 @@ const HeadsOrTails = () => {
 };
 
 export default HeadsOrTails;
-
-{
-  /* 
-  <img className="w-25 flip-img" src={state.side} alt="" />
-
-  <img
-className="w-25 flip-img"
-src="./assets/images/hexagon.png"
-alt=""
-style={state.flippingStyle}
-/> */
-}

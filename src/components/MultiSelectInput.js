@@ -29,7 +29,7 @@ function CreatableInputOnly(props) {
 
       setState({...state, value: [...newState]})
     })()
-  }, []);
+  }, [props.id]);
 
 
   // updating form input with array of names
@@ -38,14 +38,11 @@ function CreatableInputOnly(props) {
       ? [...state.value].map((obj) => obj.value)
       : [];
     props.setInput({ ...props.input, students: studentsList });
-    console.log(state)
   }, [state]);
 
   // original handle functions
   const handleChange = (value, actionMeta) => {
     console.group("Value Changed");
-    console.log(value);
-    console.log(`action: ${actionMeta.action}`);
     console.groupEnd();
     setState({ ...state, value });
   };
@@ -60,9 +57,6 @@ function CreatableInputOnly(props) {
     switch (event.key) {
       case "Enter":
       case "Tab":
-        console.group("Value Added");
-        console.log(value);
-        console.groupEnd();
         if (value) {
           setState({
             ...state,

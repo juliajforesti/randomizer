@@ -18,9 +18,8 @@ const CohortAdd = (props) => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const result = await api.post("/cohort-create", input);
-      console.log(result);
-      history.push('/randomizer')
+      await api.post("/cohort-create", input);
+      history.push('/')
     } catch (err) {
       console.error(err);
     }

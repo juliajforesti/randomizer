@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 const Searchbar = (props) => {
-
+  const {searchFilter} = props
   const [input, setInput] = useState('');
 
   function handleChange(e){
@@ -12,7 +12,7 @@ const Searchbar = (props) => {
   }
 
   useEffect(() => {
-    props.searchFilter(input)
+    searchFilter(input)
   }, [input]);
 
   return (  

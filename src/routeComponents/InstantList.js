@@ -11,27 +11,31 @@ const InstantList = (props) => {
   });
 
   function handleSubmit(e, input) {
-    e.preventDefault()
+    e.preventDefault();
     localStorage.setItem("selectedCohort", JSON.stringify(input));
     props.setSelected(JSON.parse(localStorage.getItem("selectedCohort")));
-    history.push('/randomizer/random-order')
+    history.push("/random-order");
   }
 
   return (
-    <form className='p-5' onSubmit={(e) => handleSubmit(e, input)}>
-      <label className="text-light" htmlFor="students">
-        Names:
-      </label>
+    <div>
+      <h4 className="text-light container">Create your own list!</h4>
+      <p className="text-light container">It will not be saved to the database, but you will be able to use all features after saving it. </p>
+      <form className="p-5" onSubmit={(e) => handleSubmit(e, input)}>
+        <label className="text-light" htmlFor="students">
+          Names:
+        </label>
 
-      <MultiSelectInput input={input} setInput={setInput} />
+        <MultiSelectInput input={input} setInput={setInput} />
 
-      <button className="btn btn-light mx-2" type="submit">
-        Save
-      </button>
-      <button className="btn btn-light mx-2" onClick={() => history.goBack()}>
-        Cancel
-      </button>
-    </form>
+        <button className="btn btn-light mx-2" type="submit">
+          Save
+        </button>
+        <button className="btn btn-light mx-2" onClick={() => history.goBack()}>
+          Cancel
+        </button>
+      </form>
+    </div>
   );
 };
 

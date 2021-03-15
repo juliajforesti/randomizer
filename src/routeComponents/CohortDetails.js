@@ -18,9 +18,16 @@ const CohortDetails = (props) => {
       setIsLoading(false);
     }
   }, [cohort]);
+  
   function renderPage() {
     if (isLoading) {
-      return <h2 className="text-light">LOADING...</h2>;
+      return (
+        <h2 className="text-light">
+          <div className="spinner-border text-light" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        </h2>
+      );
     }
     return (
       <div>
@@ -29,26 +36,30 @@ const CohortDetails = (props) => {
           {cohort.startYear}
         </h1>
         <div className="students-list">
-          {cohort.students.map((student, i) => (
-            <p key={i} className="text-light text-capitalize">
-              {i + 1}. {student}
-            </p>
-          ))}
+          {cohort.students
+            .sort((a, b) => a.localeCompare(b))
+            .map((student, i) => (
+              <p key={i} className="text-light text-capitalize">
+                {i + 1}. {student}
+              </p>
+            ))}
         </div>
         <Link
           className="btn btn-light mx-1 mt-3"
-          to={`/randomizer/cohort-edit/${cohort._id}`}
+          to={`/cohort-edit/${cohort._id}`}
         >
           Edit
         </Link>
-        <button
-          className="btn btn-danger mx-1 mt-3"
-          onClick={() => {
-            setShowModal(true)
-          }}
-        >
-          Delete
-        </button>
+        {cohort.campus? (
+          <button
+            className="btn btn-danger mx-1 mt-3"
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
+            Delete
+          </button>
+        ) : <></>}
       </div>
     );
   }
@@ -56,10 +67,13 @@ const CohortDetails = (props) => {
   return (
     <div>
       {renderPage()}
-      <ConfirmationModal show={showModal} handleClose={handleModalClose} action={`/randomizer/cohort-delete/${cohort._id}`} />
+      <ConfirmationModal
+        show={showModal}
+        handleClose={handleModalClose}
+        action={`/cohort-delete/${cohort._id}`}
+      />
     </div>
-  )
-
+  );
 };
 
 export default CohortDetails;

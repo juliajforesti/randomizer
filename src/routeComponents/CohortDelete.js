@@ -9,7 +9,7 @@ const CohortDelete = (props) => {
     (async function(){
       try{
         await api.delete(`cohort/${id}`)
-        props.history.push('/randomizer')
+        props.history.push('/')
       }catch(err){
         console.error(err)
       }

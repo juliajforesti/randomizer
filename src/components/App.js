@@ -4,7 +4,7 @@ import "../assets/css/App.css";
 import "../assets/css/styles.css";
 import Footer from "./Footer";
 import Home from "../routeComponents/Home";
-import NavbarComponent from "./NavbarComponent";
+import Navbar from "./Navbar";
 import PairsGenerator from "../routeComponents/PairsGenerator";
 import RandomOrder from "../routeComponents/RandomOrder";
 import StudentRandomizer from "../routeComponents/StudentRandomizer";
@@ -35,7 +35,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <div className="bg-dark-blue">
-          <NavbarComponent cohort={cohort} />
+          <Navbar cohort={cohort} />
           <div className="w-100 main-box">
             <Route
               exact
@@ -49,7 +49,7 @@ function App() {
             />
             <Route
               exact
-              path="/instant-list"
+              path="/custom-list"
               render={() => (
                 <InstantList
                   cohort={cohort}
