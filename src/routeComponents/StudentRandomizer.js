@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 
 const StudentRandomizer = (props) => {
-
   const [state, setState] = useState({
-    students: [...props.students],
+    students: [...props.cohort.students],
     picked: "",
     isLoading: false,
   });
@@ -28,24 +27,23 @@ const StudentRandomizer = (props) => {
     }, 4000);
   };
 
-
   return (
     <div className="App">
       <h1 className="pt-3">Randomizer</h1>
-      <button className="btn my-3 px-5" onClick={handleClick}>
+      <button className="btn btn-blue my-3 " onClick={handleClick}>
         GO!
       </button>
       <div className="result-box d-flex flex-column align-items-center justify-content-center align-content-center">
         {state.isLoading ? (
-          <h2 className="result">{state.picked}</h2>
+          <h2 className="result text-capitalize">{state.picked}</h2>
         ) : (
-          <h2 className="result" style={{ color: "#223" }}>
+          <h2 className="result text-capitalize"  style={{ color: "#223" }}>
             {state.picked}
           </h2>
         )}
       </div>
     </div>
   );
-}
- 
+};
+
 export default StudentRandomizer;

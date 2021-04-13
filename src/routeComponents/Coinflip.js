@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { Button } from "react-bootstrap";
+
 
 const HeadsOrTails = () => {
   const [state, setState] = useState({
@@ -13,11 +15,11 @@ const HeadsOrTails = () => {
     animationDuration: "3s",
   };
 
-  const imgPaths = ["./assets/images/heads.png", "./assets/images/tails.png"];
+  const sides = ["HEADS", "TAILS"];
 
   function handleFlipClick() {
-    let randomSide = imgPaths[Math.floor(Math.random() * 2)];
-    setState({...state, flippingStyle: flippingStyle, flipped: false})
+    let randomSide = sides[Math.floor(Math.random() * 2)];
+    setState({ ...state, flippingStyle: flippingStyle, flipped: false });
     setTimeout(() => {
       setState({ ...state, side: randomSide, flipped: true });
     }, 3000);
@@ -26,18 +28,14 @@ const HeadsOrTails = () => {
   return (
     <div className="App d-flex flex-column align-items-center">
       <h1 className="pt-3">Heads or Tails</h1>
-      <button className="btn my-5 px-5" onClick={handleFlipClick}>
-        GO!
-      </button>
+      <Button variant="info" className='m-5 btn-blue' onClick={handleFlipClick}> GO! </Button>
       {state.flipped ? (
-        <img className="w-25 flip-img" src={state.side} alt="" />
+        <div style={state.flippingStyle} className="flip-img coin ">
+        <p className='coin-text'>{state.side}</p>
+        </div>
       ) : (
-        <img
-          className="w-25 flip-img"
-          src="./assets/images/hexagon.png"
-          alt=""
-          style={state.flippingStyle}
-        />
+        <div style={state.flippingStyle} className="flip-img coin">
+        </div>
       )}
     </div>
   );

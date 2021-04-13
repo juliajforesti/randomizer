@@ -1,34 +1,123 @@
-import React, {useEffect, useState} from "react";
-import {BrowserRouter, Route} from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 import "../assets/css/App.css";
+import "../assets/css/styles.css";
+
 import Footer from "./Footer";
-import Home from "./Home";
+import Home from "../routeComponents/Home";
 import Navbar from "./Navbar";
-import PairsGenerator from "./PairsGenerator";
-import RandomOrder from "./RandomOrder";
-import StudentRandomizer from "./StudentRandomizer";
-import HeadsOrTails from "./HeadsOrTails";
+import PairsGenerator from "../routeComponents/PairsGenerator";
+import RandomOrder from "../routeComponents/RandomOrder";
+import StudentRandomizer from "../routeComponents/StudentRandomizer";
+import HeadsOrTails from "../routeComponents/Coinflip";
+import CohortAdd from "../routeComponents/CohortAdd";
+import CohortDetails from "../routeComponents/CohortDetails";
+import CohortEdit from "../routeComponents/CohortEdit";
+import CohortDelete from "../routeComponents/CohortDelete";
+import InstantList from "../routeComponents/InstantList";
 
 function App() {
-  const [students, setStudents] = useState([]);
+  const [cohort, setCohort] = useState({
+    course: "",
+    campus: "",
+    startMonth: "",
+    startYear: null,
+    students: [""],
+  });
+  const [selected, setSelected] = useState({});
+
+  let storage = JSON.parse(localStorage.getItem("selectedCohort"));
 
   useEffect(() => {
-    console.log(students)
-  }, [students]);
-  
-  return(
-    <div className='App'>
-    <BrowserRouter>
-      <Navbar />
-      <Route exact path='/randomizer' render={() => <Home students={students} setStudents={setStudents} />} />
-      <Route exact path='/randomizer/random' render={() => <StudentRandomizer students={students} />} /> 
-      <Route exact path='/randomizer/pairs' render={() => <PairsGenerator students={students}/>} /> 
-      <Route exact path='/randomizer/random-order' render={() => <RandomOrder students={students}/>} /> 
-      <Route exact path='/randomizer/heads-or-tails' component={HeadsOrTails} />
-      <Footer />
-    </BrowserRouter>
+    setCohort(storage);
+  }, [selected]);
+
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <div className="bg-dark-blue">
+          <Navbar cohort={cohort} />
+          <div className="w-100 main-box">
+            <Route
+              exact
+              path="/"
+              render={() => <Home setSelected={setSelected} />}
+            />
+            <Route
+              exact
+              path="/add-cohort"
+              render={() => <CohortAdd cohort={cohort} setCohort={setCohort} />}
+            />
+            <Route
+              exact
+              path="/custom-list"
+              render={() => (
+                <InstantList
+                  cohort={cohort}
+                  setCohort={setCohort}
+                  setSelected={setSelected}
+                />
+              )}
+            />
+
+            <Route
+              exact
+              path="/cohort/:id"
+              render={(routeProps) => (
+                <CohortDetails
+                  {...routeProps}
+                  cohort={cohort}
+                  setCohort={setCohort}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/cohort-edit/:id"
+              render={(routeProps) => (
+                <CohortEdit
+                  {...routeProps}
+                  cohort={cohort}
+                  setCohort={setCohort}
+                  setSelected={setSelected}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/cohort-delete/:id"
+              render={(routeProps) => (
+                <CohortDelete
+                  {...routeProps}
+                  cohort={cohort}
+                  setCohort={setCohort}
+                  setSelected={setSelected}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/random"
+              render={() => <StudentRandomizer cohort={cohort} />}
+            />
+            <Route
+              exact
+              path="/pairs"
+              render={() => <PairsGenerator cohort={cohort} />}
+            />
+            <Route
+              exact
+              path="/random-order"
+              render={() => <RandomOrder cohort={cohort} />}
+            />
+            <Route exact path="/heads-or-tails" component={HeadsOrTails} />
+          </div>
+        </div>
+
+        <Footer />
+      </BrowserRouter>
     </div>
-  )
+  );
 }
 
 export default App;

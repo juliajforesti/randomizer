@@ -1,0 +1,43 @@
+
+.bg-dark-blue {
+  background-color: #0D3340;
+}
+.btn-blue {
+  background-color: #2699BF;
+  border: none;
+  color: #0D3340;
+  font-weight: bold;
+  width: 20%;
+}
+.btn-blue:hover{
+  background-color: #196680;
+}
+.btn-nav {
+  width: 150px;
+}
+a {
+  color: currentColor;
+  text-decoration:none;
+}
+a:hover{
+  color: currentColor;
+  text-decoration: none;
+}
+
+h1 {
+  color: #2699BF;
+  font-size: 3rem;
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+}
+.form-title {
+  color: white;
+}
+li {
+  list-style: none;
+}
+.title-color{
+  color: #2699BF;
+}
+.border-radius{
+  border-radius: 0.5rem;
+}
